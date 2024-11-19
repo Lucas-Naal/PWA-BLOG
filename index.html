@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#317EFB" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3/css/bootstrap.min.css">
+    <title>PWA Blog</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PWA Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#publicaciones">Publicaciones</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Inicio -->
+    <section id="inicio" class="container my-5" style="animation: fadeIn 2s ease-in-out;">
+        <h1 class="text-center mb-4 glow-text" style="animation: slideIn 1.5s ease-in-out;">
+            Bienvenido a PWA Blog
+        </h1>
+        <div class="card p-4 bg-light shadow-epic"
+            style="animation: bounceIn 1.5s ease-in-out, shadowPulse 2s infinite;">
+            <p>
+                Una <strong>Aplicación Web Progresiva (PWA)</strong> es una tecnología que combina lo mejor de las
+                aplicaciones móviles y los sitios web.
+                Son rápidas, confiables y funcionan sin conexión a internet. Además, puedes instalarlas en tu
+                dispositivo como si fueran una app nativa. 🎉
+            </p>
+            <p>¿Qué puedes hacer aquí?</p>
+            <ul>
+                <li class="list-item-epic">Leer publicaciones interesantes 📖.</li>
+                <li class="list-item-epic">Disfrutar de una experiencia moderna y rápida ⚡.</li>
+                <li class="list-item-epic">Acceder a tus contenidos favoritos incluso sin conexión 🌐.</li>
+            </ul>
+            <p class="text-center mt-3">¡Explora el blog y disfruta la experiencia PWA!</p>
+        </div>
+    </section>
+
+
+    <!-- Publicaciones -->
+<section id="publicaciones" class="container my-5" style="display: none; animation: fadeIn 2s ease-in-out;">
+    <h2 class="text-center mb-4 animate__animated animate__fadeIn">Publicaciones</h2>
+    <button id="createPostBtn" class="btn btn-success mb-3 create-post-btn" style="animation: bounceIn 1.5s ease-in-out;">
+        Crear Publicación +
+    </button>
+
+    <!-- Formulario para Crear Publicación -->
+    <div id="postFormContainer" style="display: none;">
+        <div class="card p-3 form-card">
+            <form id="postForm" class="mb-5">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titulo</label>
+                    <input type="text" class="form-control form-input" id="title" placeholder="Titulo De La Publicacion">
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenido</label>
+                    <textarea class="form-control form-input" id="content" rows="3" placeholder="Escribiendo..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Subir Imagen</label>
+                    <input type="file" class="form-control form-input" id="image">
+                </div>
+                <button type="button" id="closeFormBtn" class="btn btn-danger ms-2 close-btn" style="animation: fadeInUp 1s;">
+                    Cerrar
+                </button>
+                <button type="submit" class="btn btn-success">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor de Publicaciones -->
+    <div id="postsContainer" class="row">
+        <!-- Las publicaciones serán insertadas aquí -->
+    </div>
+</section>
+
+    <!-- Modal para editar publicaciones -->
+    <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPostModalLabel">Editar Publicación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPostForm">
+                        <div class="mb-3">
+                            <label for="editTitle" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" id="editTitle">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editContent" class="form-label">Contenido</label>
+                            <textarea class="form-control" id="editContent" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editImage" class="form-label">Cambiar Imagen (opcional)</label>
+                            <input type="file" class="form-control" id="editImage">
+                            <img id="previewEditImage" src="" alt="Imagen actual" class="mt-3 img-fluid"
+                                style="max-height: 200px; display: none;">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="saveEditBtn">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap-5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href').substring(1);
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(target).style.display = 'block';
+            });
+        });
+
+    </script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
