@@ -57,41 +57,45 @@
 
 
     <!-- Publicaciones -->
-<section id="publicaciones" class="container my-5" style="display: none; animation: fadeIn 2s ease-in-out;">
-    <h2 class="text-center mb-4 animate__animated animate__fadeIn">Publicaciones</h2>
-    <button id="createPostBtn" class="btn btn-success mb-3 create-post-btn" style="animation: bounceIn 1.5s ease-in-out;">
-        Crear Publicación +
-    </button>
+    <section id="publicaciones" class="container my-5" style="display: none; animation: fadeIn 2s ease-in-out;">
+        <h2 class="text-center mb-4 animate__animated animate__fadeIn">Publicaciones</h2>
+        <button id="createPostBtn" class="btn btn-success mb-3 create-post-btn"
+            style="animation: bounceIn 1.5s ease-in-out;">
+            Crear Publicación +
+        </button>
 
-    <!-- Formulario para Crear Publicación -->
-    <div id="postFormContainer" style="display: none;">
-        <div class="card p-3 form-card">
-            <form id="postForm" class="mb-5">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Titulo</label>
-                    <input type="text" class="form-control form-input" id="title" placeholder="Titulo De La Publicacion">
-                </div>
-                <div class="mb-3">
-                    <label for="content" class="form-label">Contenido</label>
-                    <textarea class="form-control form-input" id="content" rows="3" placeholder="Escribiendo..."></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Subir Imagen</label>
-                    <input type="file" class="form-control form-input" id="image">
-                </div>
-                <button type="button" id="closeFormBtn" class="btn btn-danger ms-2 close-btn" style="animation: fadeInUp 1s;">
-                    Cerrar
-                </button>
-                <button type="submit" class="btn btn-success">Publicar</button>
-            </form>
+        <!-- Formulario para Crear Publicación -->
+        <div id="postFormContainer" style="display: none;">
+            <div class="card p-3 form-card">
+                <form id="postForm" class="mb-5">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titulo</label>
+                        <input type="text" class="form-control form-input" id="title"
+                            placeholder="Titulo De La Publicacion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Contenido</label>
+                        <textarea class="form-control form-input" id="content" rows="3"
+                            placeholder="Escribiendo..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Subir Imagen</label>
+                        <input type="file" class="form-control form-input" id="image">
+                    </div>
+                    <button type="button" id="closeFormBtn" class="btn btn-danger ms-2 close-btn"
+                        style="animation: fadeInUp 1s;">
+                        Cerrar
+                    </button>
+                    <button type="submit" class="btn btn-success">Publicar</button>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- Contenedor de Publicaciones -->
-    <div id="postsContainer" class="row">
-        <!-- Las publicaciones serán insertadas aquí -->
-    </div>
-</section>
+        <!-- Contenedor de Publicaciones -->
+        <div id="postsContainer" class="row">
+            <!-- Las publicaciones serán insertadas aquí -->
+        </div>
+    </section>
 
     <!-- Modal para editar publicaciones -->
     <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
